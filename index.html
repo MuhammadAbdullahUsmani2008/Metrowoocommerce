@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metro - WooCommerce Theme</title>
+<link rel="icon" type="image/x-icon" href="Assets/lgo.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #1a1a1a;
+  --dark: #222;
+  --gray: #888;
+  --light-gray: #f5f5f5;
+  --green: #8bc34a;
+  --yellow: #f5a623;
+  --white: #fff;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Poppins', sans-serif;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--black);
+  background: var(--white);
+  line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== HEADER ===== */
+.header-top {
+  background: var(--white);
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo-text {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--serif);
+}
+
+.logo-m {
+  display: inline-block;
+  width: 36px;
+  height: 32px;
+}
+
+.logo-sub {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gray);
+  text-transform: uppercase;
+  margin-top: -2px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-menu a {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s;
+}
+
+.nav-menu a:hover { color: var(--green); }
+
+.nav-menu a i {
+  font-size: 10px;
+  margin-left: 2px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-actions .icon-btn {
+  position: relative;
+  font-size: 22px;
+  color: var(--black);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.header-actions .icon-btn:hover { color: var(--green); }
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: var(--black);
+  color: var(--white);
+  font-size: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.cart-total {
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+/* ===== MAIN LAYOUT: Categories + Search/Hero ===== */
+.main-layout {
+  max-width: 1280px;
+  margin: 20px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 0;
+}
+
+/* Categories Sidebar - spans both rows */
+.categories-sidebar {
+  grid-row: 1 / 3;
+  grid-column: 1;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.categories-header {
+  background: var(--black);
+  color: var(--white);
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.categories-header i {
+  font-size: 18px;
+}
+
+.categories-list {
+  background: var(--white);
+}
+
+.categories-list li {
+  padding: 14px 20px;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.categories-list li:hover {
+  background: var(--light-gray);
+}
+
+.categories-list li:last-child { border-bottom: none; }
+
+/* Search Bar - top right */
+.search-bar-wrapper {
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  border: 1px solid #e0e0e0;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  overflow: hidden;
+  height: 56px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: var(--sans);
+  border-right: 1px solid #e0e0e0;
+}
+
+.search-input::placeholder { color: #aaa; }
+
+.search-category-select {
+  padding: 14px 15px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: var(--sans);
+  background: var(--white);
+  cursor: pointer;
+  min-width: 160px;
+  appearance: auto;
+}
+
+.search-btn {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 14px 22px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-btn:hover { background: #333; }
+
+/* Hero Slider - bottom right */
+.hero-slider {
+  grid-row: 2;
+  grid-column: 2;
+  display: flex;
+  background: var(--light-gray);
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+  min-height: 420px;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+}
+
+.hero-content {
+  flex: 1;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #f8f8f8;
+}
+
+.hero-tag {
+  font-size: 48px;
+  font-weight: 700;
+  font-family: var(--serif);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--black);
+}
+
+.hero-tag .sale-box {
+  background: var(--black);
+  color: var(--white);
+  padding: 5px 20px;
+  font-size: 42px;
+  font-weight: 700;
+  font-family: var(--serif);
+}
+
+.hero-desc {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+.hero-cta {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: inline-block;
+  color: var(--black);
+}
+
+.hero-cta-line {
+  width: 30px;
+  height: 2px;
+  background: var(--black);
+  margin-bottom: 30px;
+}
+
+.hero-indicators {
+  font-size: 28px;
+  font-weight: 300;
+  color: #bbb;
+}
+
+.hero-indicators .active-num {
+  font-weight: 600;
+  color: var(--black);
+}
+
+.hero-image {
+  flex: 1;
+  background: #e8f4f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== CATEGORY BANNERS ===== */
+.category-banners {
+  max-width: 1280px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.cat-banner {
+  position: relative;
+  height: 200px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== PRODUCTS SECTION ===== */
+.products-section {
+  max-width: 1280px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+}
+
+.section-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin-bottom: 40px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-family: var(--serif);
+  color: var(--gray);
+  cursor: pointer;
+  padding-bottom: 10px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.tab-btn.active {
+  color: var(--black);
+  font-weight: 600;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: var(--black);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.product-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.product-image-wrap {
+  background: var(--light-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.product-image-wrap img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  transition: transform 0.4s;
+}
+
+.product-card:hover .product-image-wrap img {
+  transform: scale(1.05);
+}
+
+.discount-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--black);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+
+.add-to-cart-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(50,50,50,0.9);
+  color: var(--white);
+  text-align: center;
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.product-card:hover .add-to-cart-overlay {
+  transform: translateY(0);
+}
+
+.product-title {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.product-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.product-price .original {
+  text-decoration: line-through;
+  color: var(--gray);
+  font-weight: 400;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.product-price .sale {
+  color: var(--black);
+}
+
+.product-rating {
+  display: flex;
+  gap: 2px;
+}
+
+.product-rating .star {
+  color: var(--yellow);
+  font-size: 13px;
+}
+
+.product-rating .star.empty {
+  color: #ddd;
+}
+
+.view-all-products {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.view-all-products a {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.view-all-products a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: var(--black);
+}
+
+/* ===== CLEARANCE BANNER ===== */
+.clearance-banner {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.clearance-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.clearance-content {
+  position: absolute;
+  left: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 400px;
+}
+
+.clearance-content h2 {
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  color: var(--black);
+}
+
+.clearance-content p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.7;
+}
+
+.clearance-btn {
+  display: inline-block;
+  padding: 14px 35px;
+  background: var(--white);
+  color: var(--black);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.clearance-btn:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* ===== FEATURED PRODUCTS ===== */
+.featured-section {
+  max-width: 1280px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.featured-card {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 30px;
+}
+
+.featured-card:first-child {
+  background: #eef6fb;
+}
+
+.featured-card:last-child {
+  background: #f0f0ec;
+}
+
+.featured-img {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+.featured-info {
+  flex: 1;
+}
+
+.featured-info h3 {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.featured-info p {
+  font-size: 14px;
+  color: var(--gray);
+  margin-bottom: 20px;
+}
+
+.featured-cta {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.featured-cta::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  background: var(--black);
+}
+
+/* ===== BLOG SECTION ===== */
+.blog-section {
+  max-width: 1280px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+}
+
+.blog-section h2 {
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.blog-card {
+  cursor: pointer;
+}
+
+.blog-image-wrap {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  aspect-ratio: 4/3;
+}
+
+.blog-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-date {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.blog-date.white {
+  background: var(--white);
+  color: var(--black);
+}
+
+.blog-date.black {
+  background: var(--black);
+  color: var(--white);
+}
+
+.blog-date .day { font-size: 16px; font-weight: 700; }
+
+.blog-category {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.blog-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* ===== NEWSLETTER ===== */
+.newsletter-section {
+  background: var(--light-gray);
+  padding: 60px 20px;
+  margin-bottom: 0;
+}
+
+.newsletter-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.newsletter-text {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+  max-width: 600px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 16px 24px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 14px;
+  font-family: var(--sans);
+  outline: none;
+  background: var(--white);
+}
+
+.newsletter-form input:focus { border-color: var(--black); }
+
+.newsletter-form button {
+  padding: 16px 35px;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+
+.newsletter-form button:hover { background: #333; }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #111;
+  color: #ccc;
+  padding: 60px 20px 0;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 50px;
+}
+
+.footer-logo {
+  margin-bottom: 25px;
+}
+
+.footer-logo .logo-text {
+  color: var(--white);
+  font-size: 28px;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-contact-item i {
+  font-size: 18px;
+  margin-top: 3px;
+  color: #aaa;
+  width: 20px;
+}
+
+.footer-col h4 {
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--white);
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+  font-size: 14px;
+  color: #aaa;
+  transition: color 0.3s;
+}
+
+.footer-col ul li a:hover { color: var(--white); }
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding: 25px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-copyright {
+  font-size: 13px;
+  color: #888;
+}
+
+.footer-social {
+  display: flex;
+  gap: 18px;
+}
+
+.footer-social a {
+  color: #aaa;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.footer-social a:hover { color: var(--white); }
+
+.footer-payments {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.footer-payments img {
+  height: 28px;
+  opacity: 0.8;
+}
+
+/* ===== FLOATING BUTTONS ===== */
+.buy-now-float {
+  position: fixed;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--green);
+  color: var(--white);
+  padding: 14px 24px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(139,195,74,0.4);
+  z-index: 999;
+  transition: all 0.3s;
+  border: none;
+  font-family: var(--sans);
+}
+
+.buy-now-float:hover {
+  background: #7ab33a;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.scroll-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 42px;
+  height: 42px;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.scroll-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top:hover { background: #333; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-inner { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nav-menu { display: none; }
+  .main-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .categories-sidebar {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .search-bar-wrapper {
+    grid-row: 2;
+    grid-column: 1;
+    border-left: 1px solid #e0e0e0;
+    border-radius: 0 0 4px 4px;
+  }
+  .hero-slider {
+    grid-row: 3;
+    grid-column: 1;
+    flex-direction: column;
+    min-height: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+  }
+  .hero-content { padding: 40px 30px; }
+  .hero-tag { font-size: 32px; }
+  .hero-tag .sale-box { font-size: 28px; }
+  .category-banners { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .featured-section { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .clearance-content { left: 30px; }
+  .clearance-content h2 { font-size: 28px; }
+  .newsletter-inner { flex-direction: column; text-align: center; }
+  .newsletter-form { width: 100%; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .buy-now-float { right: 15px; padding: 10px 18px; font-size: 12px; }
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.custom-logo {
+  display: block;
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header-top">
+  <div class="header-inner">
+
+  <div class="logo">
+    <a href="#">
+      <img src="Assets/lgo.png" alt="Metro Logo" class="custom-logo">
+    </a>
+  </div>
+
+  <!-- rest of your header -->
+
+    <nav class="nav-menu">
+      <a href="#">Home <i class="fas fa-chevron-down"></i></a>
+      <a href="#">Featured Products <i class="fas fa-chevron-down"></i></a>
+      <a href="#">Shop <i class="fas fa-chevron-down"></i></a>
+      <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
+      <a href="#">Elements <i class="fas fa-chevron-down"></i></a>
+      <a href="#">Blog <i class="fas fa-chevron-down"></i></a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="icon-btn"><i class="far fa-user"></i></div>
+      <div class="icon-btn">
+        <i class="far fa-heart"></i>
+        <span class="badge">0</span>
+      </div>
+      <div class="icon-btn" style="display:flex;align-items:center;">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="badge">0</span>
+        <span class="cart-total">$0.00</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN LAYOUT: Categories (left, full height) + Search/Hero (right) -->
+<div class="main-layout">
+
+  <!-- Categories Sidebar - spans full height on left -->
+  <div class="categories-sidebar">
+    <div class="categories-header">
+      <i class="fas fa-bars"></i> CATEGORIES
+    </div>
+    <ul class="categories-list">
+      <li>Men</li>
+      <li>Women</li>
+      <li>Electronics <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></li>
+      <li>Jewellery</li>
+      <li>Shoes</li>
+      <li>Kid's Wear</li>
+      <li>Sports</li>
+      <li>Toys</li>
+      <li>Gift Corners</li>
+    </ul>
+  </div>
+
+  <!-- Search Bar - top right -->
+  <div class="search-bar-wrapper">
+    <input type="text" class="search-input" placeholder="Search Products Here">
+    <select class="search-category-select">
+      <option>All Categories</option>
+      <option>Men</option>
+      <option>Women</option>
+      <option>Electronics</option>
+      <option>Jewellery</option>
+    </select>
+    <button class="search-btn"><i class="fas fa-search"></i></button>
+  </div>
+
+  <!-- Hero Slider - bottom right -->
+  <div class="hero-slider">
+    <div class="hero-content">
+      <div class="hero-tag">Spring <span class="sale-box">Sale</span></div>
+      <p class="hero-desc">New Modern Stylist Fashionable Men's Wear<br>holder bag holder.</p>
+      <span class="hero-cta">EXPLORE NOW</span>
+      <div class="hero-cta-line"></div>
+      <div class="hero-indicators">
+        <span class="active-num">01</span> / <span class="inactive-num">02</span> / <span class="inactive-num">03</span>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=700&q=80" alt="Spring Sale Model">
+    </div>
+  </div>
+
+</div>
+
+<!-- CATEGORY BANNERS -->
+<div class="category-banners">
+  <div class="cat-banner">
+    <img src="Assets/2.jpg" alt="Women's Collection">
+  </div>
+  <div class="cat-banner">
+    <img src="Assets/3.jpg" alt="Men's Collection">
+  </div>
+</div>
+
+<!-- PRODUCTS SECTION -->
+<section class="products-section">
+  <div class="section-tabs">
+    <button class="tab-btn active" data-filter="all">All</button>
+    <button class="tab-btn" data-filter="popular">Popular</button>
+    <button class="tab-btn" data-filter="sale">Sale</button>
+    <button class="tab-btn" data-filter="rated">Best Rated</button>
+  </div>
+
+  <div class="products-grid" id="productsGrid">
+
+    <!-- Product 1: Teddy Bag -->
+    <div class="product-card" data-cat="all popular">
+      <div class="product-image-wrap">
+        <img src="Assets/4.jpg" alt="Teddy Bag">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Teddy Bag</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="sale">$42.00</span></div>
+        <div class="product-rating">
+          <i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 2: Game Controller -->
+    <div class="product-card" data-cat="all sale">
+      <div class="product-image-wrap">
+        <span class="discount-badge">-4%</span>
+        <img src="Assets/5.jpg" alt="Game Controller">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Game Controller</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="original">$390.00</span><span class="sale">$375.00</span></div>
+        <div class="product-rating">
+          <i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 3: Mens Tshirt -->
+    <div class="product-card" data-cat="all popular">
+      <div class="product-image-wrap">
+        <img src="Assets/6.jpg" alt="Mens Tshirt">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Mens Tshirt</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="sale">$27.00</span></div>
+        <div class="product-rating">
+          <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 4: Headphone -->
+    <div class="product-card" data-cat="all popular rated">
+      <div class="product-image-wrap">
+        <img src="Assets/7.jpg" alt="Headphone">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Headphone</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="sale">$35.00</span></div>
+        <div class="product-rating">
+          <i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 5: Necklace -->
+    <div class="product-card" data-cat="all popular">
+      <div class="product-image-wrap">
+        <img src="Assets/8.jpg" alt="Necklace">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Necklace</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="sale">$384.00</span></div>
+        <div class="product-rating">
+          <i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 6: Genuine Leather Casual -->
+    <div class="product-card" data-cat="all sale">
+      <div class="product-image-wrap">
+        <span class="discount-badge">-27%</span>
+        <img src="Assets/9.jpg" alt="Genuine Leather Casual">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Genuine Leather Casual</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="sale">$44.00 – $70.00</span></div>
+        <div class="product-rating">
+          <i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 7: Hobbyist Watch -->
+    <div class="product-card" data-cat="all popular rated">
+      <div class="product-image-wrap">
+        <img src="Assets/10.jpg" alt="Hobbyist Watch">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Hobbyist Watch</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="sale">$160.00</span></div>
+        <div class="product-rating">
+          <i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 8: Acetate Frame Sunglasses -->
+    <div class="product-card" data-cat="all sale">
+      <div class="product-image-wrap">
+        <span class="discount-badge">-86%</span>
+        <img src="Assets/11.png" alt="Acetate Frame Sunglasses">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Acetate Frame Sunglasses</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="sale">$10.00 – $70.00</span></div>
+        <div class="product-rating">
+          <i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 9: Leaf Ban Earring -->
+    <div class="product-card" data-cat="all sale rated">
+      <div class="product-image-wrap">
+        <span class="discount-badge">-18%</span>
+        <img src="Assets/12.jpg" alt="Leaf Ban Earring">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Leaf Ban Earring</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="original">$125.00</span><span class="sale">$102.00</span></div>
+        <div class="product-rating">
+          <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 10: Blue Finger Ring -->
+    <div class="product-card" data-cat="all sale rated">
+      <div class="product-image-wrap">
+        <span class="discount-badge">-15%</span>
+        <img src="Assets/13.jpg" alt="Blue Finger Ring">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Blue Finger Ring</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="original">$123.00</span><span class="sale">$104.00</span></div>
+        <div class="product-rating">
+          <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 11: Blue Finger Ring 2 -->
+    <div class="product-card" data-cat="all sale rated">
+      <div class="product-image-wrap">
+        <span class="discount-badge">-7%</span>
+        <img src="Assets/14.jpg" alt="Blue Finger Ring">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Blue Finger Ring</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="original">$155.00</span><span class="sale">$144.00</span></div>
+        <div class="product-rating">
+          <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 12: Blue Finger Ring 3 -->
+    <div class="product-card" data-cat="all sale rated">
+      <div class="product-image-wrap">
+        <span class="discount-badge">-11%</span>
+        <img src="Assets/15.jpg" alt="Blue Finger Ring">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Blue Finger Ring</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="original">$999.00</span><span class="sale">$888.00</span></div>
+        <div class="product-rating">
+          <i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i><i class="fas fa-star star"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 13: Stylist Shoe -->
+    <div class="product-card" data-cat="all popular">
+      <div class="product-image-wrap">
+        <img src="Assets/16.jpg" alt="Stylist Shoe">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Stylist Shoe</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="sale">$357.00</span></div>
+        <div class="product-rating">
+          <i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 14: Taxus Bag -->
+    <div class="product-card" data-cat="all popular">
+      <div class="product-image-wrap">
+        <img src="Assets/17.jpg" alt="Taxus Bag">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Taxus Bag</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="sale">$18.00</span></div>
+        <div class="product-rating">
+          <i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 15: Daily Cream -->
+    <div class="product-card" data-cat="all sale">
+      <div class="product-image-wrap">
+        <span class="discount-badge">-29%</span>
+        <img src="Assets/18.png" alt="Daily Cream">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Daily Cream</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="original">$56.00</span><span class="sale">$40.00</span></div>
+        <div class="product-rating">
+          <i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 16: Herbal Shampoo -->
+    <div class="product-card" data-cat="all sale">
+      <div class="product-image-wrap">
+        <span class="discount-badge">-11%</span>
+        <img src="Assets/19.jpg" alt="Herbal Shampoo">
+        <div class="add-to-cart-overlay" onclick="addToCart(event)">ADD TO CART</div>
+      </div>
+      <div class="product-title">Herbal Shampoo</div>
+      <div class="product-price-row">
+        <div class="product-price"><span class="original">$999.00</span><span class="sale">$888.00</span></div>
+        <div class="product-rating">
+          <i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i><i class="far fa-star star empty"></i>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="view-all-products">
+    <a href="#">VIEW ALL PRODUCTS</a>
+  </div>
+</section>
+
+<!-- CLEARANCE BANNER -->
+<section class="clearance-banner">
+  <img src="Assets/rc.jpg" alt="Clearance Sale">
+  <div class="clearance-content">
+    <h2>End of Season Clearance Sale upto 30%</h2>
+    <p>Stock is limited. Order now to avoid disappointment.</p>
+    <button class="clearance-btn">SHOP NOW</button>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="featured-section">
+  <div class="featured-card">
+    <div class="featured-img">
+      <img src="Assets/swtlng.jpg" alt="Glamour Long Sweater">
+    </div>
+    <div class="featured-info">
+      <h3>Glamour<br>Long Sweater</h3>
+      <p>The timeless designs jeans</p>
+      <span class="featured-cta">SHOP NOW</span>
+    </div>
+  </div>
+  <div class="featured-card">
+    <div class="featured-info">
+      <h3>Locatto<br>Sports Shoes</h3>
+      <p>The timeless designs jeans</p>
+      <span class="featured-cta">SHOP NOW</span>
+    </div>
+    <div class="featured-img">
+      <img src="Assets/shs.jpg" alt="Locatto Sports Shoes">
+    </div>
+  </div>
+</section>
+
+<!-- BLOG SECTION -->
+<section class="blog-section">
+  <h2>Inspirational Posts</h2>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-image-wrap">
+        <img src="Assets/26.jpg" alt="Blog 1">
+        <div class="blog-date white"><span class="day">22</span>Jun</div>
+      </div>
+      <div class="blog-category">Technology, Tips</div>
+      <div class="blog-title">Whatever the occasion our flowers will make it special</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-image-wrap">
+        <img src="Assets/27.jpg" alt="Blog 2">
+        <div class="blog-date black"><span class="day">22</span>Jun</div>
+      </div>
+      <div class="blog-category">Clothing, Jewellery</div>
+      <div class="blog-title">What to do when you get a gift from someone you didn't buy for</div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-image-wrap">
+        <img src="Assets/28.jpg" alt="Blog 3">
+        <div class="blog-date white"><span class="day">22</span>Jun</div>
+      </div>
+      <div class="blog-category">Covid-19, Lifestyle</div>
+      <div class="blog-title">Habitant morbi tristique senectus</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="newsletter-inner">
+    <div class="newsletter-text">JOIN US and GET A SPECIAL WELCOME GIFT</div>
+    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-logo">
+        <div class="logo-text">
+          <svg class="logo-m" viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:32px;height:28px;">
+            <path d="M2 34L12 4L20 20L28 4L38 34" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          etro
+        </div>
+      </div>
+      <div class="footer-contact">
+        <div class="footer-contact-item">
+          <i class="far fa-map-marker-alt"></i>
+          <span>59 Street, Newyork City, Rose Town, 05 Rive House</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <span>+123 456 7890</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="far fa-envelope"></i>
+          <span>info@example.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Information</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Latest Post</a></li>
+        <li><a href="#">Selling Tips</a></li>
+        <li><a href="#">Advertising</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>My Account</h4>
+      <ul>
+        <li><a href="#">My Account</a></li>
+        <li><a href="#">Login/Register</a></li>
+        <li><a href="#">Cart</a></li>
+        <li><a href="#">Wishlist</a></li>
+        <li><a href="#">Order History</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Help & Support</h4>
+      <ul>
+        <li><a href="#">How To Shop</a></li>
+        <li><a href="#">Payment</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Delivery</a></li>
+        <li><a href="#">Privacy & Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copyright">© Copyright Metro 2026. Designed and Developed by RadiusTheme</div>
+    <div class="footer-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-pinterest-p"></i></a>
+      <a href="#"><i class="fas fa-rss"></i></a>
+    </div>
+    <div class="footer-payments">
+      <img src="Assets/l1.png" alt="Visa">
+      <img src="Assets/l2.png" alt="MasterCard">
+      <img src="Assets/l3.png" alt="Discover">
+      <img src="Assets/l4.png" alt="American Express">
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<button class="buy-now-float" onclick="alert('Buy Now clicked!')">
+  <i class="fas fa-shopping-cart"></i> Buy Now
+</button>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+// Tab Filtering
+const tabBtns = document.querySelectorAll('.tab-btn');
+const productCards = document.querySelectorAll('.product-card');
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    productCards.forEach(card => {
+      if (filter === 'all' || card.dataset.cat.includes(filter)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// Add to Cart
+let cartCount = 0;
+function addToCart(e) {
+  e.stopPropagation();
+  cartCount++;
+  document.querySelectorAll('.badge').forEach(b => b.textContent = cartCount);
+  const total = (cartCount * 42).toFixed(2);
+  document.querySelector('.cart-total').textContent = '$' + total;
+}
+
+// Scroll to Top
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('scrollTop');
+  if (window.scrollY > 400) {
+    btn.classList.add('show');
+  } else {
+    btn.classList.remove('show');
+  }
+});
+
+// Slider Indicators Animation
+let currentSlide = 1;
+setInterval(() => {
+  currentSlide = currentSlide >= 3 ? 1 : currentSlide + 1;
+  const indicators = document.querySelector('.hero-indicators');
+  const nums = [1, 2, 3].filter(n => n !== currentSlide);
+  indicators.innerHTML = `<span class="active-num">0${currentSlide}</span> / <span class="inactive-num">0${nums[0]}</span> / <span class="inactive-num">0${nums[1]}</span>`;
+}, 4000);
+</script>
+
+</body>
+</html>

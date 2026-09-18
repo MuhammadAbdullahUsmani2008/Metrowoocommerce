@@ -146,6 +146,42 @@ img { max-width: 100%; display: block; }
   margin-left: 5px;
 }
 
+/* Mobile menu toggle */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--black);
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Mobile nav (hidden by default) */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: var(--white);
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 10px 20px;
+}
+
+.mobile-nav a {
+  padding: 14px 0;
+  font-size: 15px;
+  color: var(--black);
+  border-bottom: 1px solid #f0f0f0;
+  transition: color 0.3s;
+}
+
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--green); }
+
+.mobile-nav.open {
+  display: flex;
+}
+
 /* ===== MAIN LAYOUT: Categories + Search/Hero ===== */
 .main-layout {
   max-width: 1280px;
@@ -997,16 +1033,33 @@ img { max-width: 100%; display: block; }
 .scroll-top:hover { background: #333; }
 
 /* ===== RESPONSIVE ===== */
+
+/* Large tablets / small laptops */
 @media (max-width: 1024px) {
   .products-grid { grid-template-columns: repeat(3, 1fr); }
   .footer-inner { grid-template-columns: repeat(2, 1fr); }
+  .nav-menu { gap: 20px; }
+  .hero-content { padding: 40px 30px; }
+  .hero-tag { font-size: 38px; }
+  .hero-tag .sale-box { font-size: 34px; }
 }
 
+/* Tablets / small screens */
 @media (max-width: 768px) {
   .nav-menu { display: none; }
+  .menu-toggle { display: block; }
+
+  .header-inner { padding: 0 15px; }
+  .header-top { padding: 15px 0; }
+  .custom-logo { width: 110px; }
+  .cart-total { display: none; }
+  .header-actions { gap: 14px; }
+
   .main-layout {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
+    margin: 15px auto;
+    padding: 0 15px;
   }
   .categories-sidebar {
     grid-row: 1;
@@ -1017,7 +1070,12 @@ img { max-width: 100%; display: block; }
     grid-column: 1;
     border-left: 1px solid #e0e0e0;
     border-radius: 0 0 4px 4px;
+    flex-wrap: wrap;
+    height: auto;
   }
+  .search-input { flex: 1 1 100%; border-right: none; border-bottom: 1px solid #e0e0e0; }
+  .search-category-select { flex: 1; min-width: 0; }
+  .search-btn { flex: 0 0 auto; }
   .hero-slider {
     grid-row: 3;
     grid-column: 1;
@@ -1029,17 +1087,73 @@ img { max-width: 100%; display: block; }
   .hero-content { padding: 40px 30px; }
   .hero-tag { font-size: 32px; }
   .hero-tag .sale-box { font-size: 28px; }
-  .category-banners { grid-template-columns: 1fr; }
-  .products-grid { grid-template-columns: repeat(2, 1fr); }
-  .featured-section { grid-template-columns: 1fr; }
-  .blog-grid { grid-template-columns: 1fr; }
-  .clearance-content { left: 30px; }
-  .clearance-content h2 { font-size: 28px; }
+  .hero-image { min-height: 260px; }
+
+  .category-banners { grid-template-columns: 1fr; padding: 0 15px; margin-bottom: 40px; }
+  .cat-banner { height: 180px; }
+
+  .products-section { padding: 0 15px; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .section-tabs { gap: 20px; flex-wrap: wrap; }
+
+  .clearance-banner { height: 320px; }
+  .clearance-content { left: 25px; right: 25px; max-width: 100%; }
+  .clearance-content h2 { font-size: 26px; }
+
+  .featured-section { grid-template-columns: 1fr; padding: 0 15px; }
+  .featured-card { flex-direction: column; text-align: center; gap: 20px; padding: 25px; }
+  .featured-card:last-child { flex-direction: column; }
+  .featured-info h3 { font-size: 24px; }
+
+  .blog-section { padding: 0 15px; }
+  .blog-grid { grid-template-columns: 1fr; gap: 25px; }
+
   .newsletter-inner { flex-direction: column; text-align: center; }
-  .newsletter-form { width: 100%; }
-  .footer-inner { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; text-align: center; }
+  .newsletter-form { width: 100%; flex-direction: column; }
+  .newsletter-form button { width: 100%; }
+
+  .footer-inner { grid-template-columns: 1fr; gap: 30px; padding: 0 15px 40px; }
+  .footer { padding: 50px 0 0; }
+  .footer-bottom { flex-direction: column; text-align: center; padding: 25px 15px; }
+  .footer-payments { justify-content: center; }
+
   .buy-now-float { right: 15px; padding: 10px 18px; font-size: 12px; }
+  .scroll-top { right: 15px; bottom: 15px; }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .custom-logo { width: 95px; }
+  .header-actions .icon-btn { font-size: 18px; }
+  .header-actions { gap: 12px; }
+
+  .hero-content { padding: 30px 20px; }
+  .hero-tag { font-size: 26px; }
+  .hero-tag .sale-box { font-size: 22px; padding: 4px 14px; }
+  .hero-desc { font-size: 14px; }
+  .hero-image { min-height: 200px; }
+
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .product-title { font-size: 14px; }
+  .product-price { font-size: 14px; }
+  .product-price .original { font-size: 12px; }
+  .section-tabs { gap: 14px; }
+  .tab-btn { font-size: 14px; }
+
+  .clearance-banner { height: 280px; }
+  .clearance-content h2 { font-size: 22px; }
+  .clearance-content p { font-size: 13px; }
+  .clearance-btn { padding: 12px 26px; font-size: 12px; }
+
+  .blog-section h2 { font-size: 26px; }
+  .blog-title { font-size: 17px; }
+
+  .newsletter-text { font-size: 20px; }
+  .newsletter-section { padding: 45px 15px; }
+
+  .footer-logo .logo-text { font-size: 24px; }
+  .footer-bottom { gap: 15px; }
+  .footer-social { flex-wrap: wrap; justify-content: center; }
 }
 .logo {
   display: flex;
@@ -1089,9 +1203,23 @@ img { max-width: 100%; display: block; }
         <span class="badge">0</span>
         <span class="cart-total">$0.00</span>
       </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </div>
 </header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav">
+  <a href="#">Home</a>
+  <a href="#">Featured Products</a>
+  <a href="#">Shop</a>
+  <a href="#">Pages</a>
+  <a href="#">Elements</a>
+  <a href="#">Blog</a>
+  <a href="#">Contact</a>
+</nav>
 
 <!-- MAIN LAYOUT: Categories (left, full height) + Search/Hero (right) -->
 <div class="main-layout">
@@ -1589,6 +1717,32 @@ img { max-width: 100%; display: block; }
 </button>
 
 <script>
+// Mobile Menu Toggle
+const menuToggle = document.getElementById('menuToggle');
+const mobileNav = document.getElementById('mobileNav');
+
+menuToggle.addEventListener('click', () => {
+  mobileNav.classList.toggle('open');
+  const icon = menuToggle.querySelector('i');
+  if (mobileNav.classList.contains('open')) {
+    icon.classList.remove('fa-bars');
+    icon.classList.add('fa-times');
+  } else {
+    icon.classList.remove('fa-times');
+    icon.classList.add('fa-bars');
+  }
+});
+
+// Close mobile menu when a link is clicked
+mobileNav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    const icon = menuToggle.querySelector('i');
+    icon.classList.remove('fa-times');
+    icon.classList.add('fa-bars');
+  });
+});
+
 // Tab Filtering
 const tabBtns = document.querySelectorAll('.tab-btn');
 const productCards = document.querySelectorAll('.product-card');
